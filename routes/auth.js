@@ -1,16 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const {signin,signup} = require("../handlers/auth");
 
-
-router.get('/signin',function(req,res){
-  console.log("I am loging in");
-  res.send("signin");
-  
-})
-
-router.get('/signup',function(req,res){
-  console.log("I am signing up");
-  res.send("signup");
-})
+router.post("/signup",signup);
+router.post("/signin",signin);
 
 module.exports = router;
