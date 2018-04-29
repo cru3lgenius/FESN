@@ -18,7 +18,15 @@ const userSchema = new mongoose.Schema({
   },
   profileImageUrl:{
     type:String
-  }
+  },
+  comments:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Comment"
+  }],
+  fragrances:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Fragrance"
+  }]
 });
 
 userSchema.pre("save",async function(next){
