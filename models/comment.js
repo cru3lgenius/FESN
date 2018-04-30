@@ -20,6 +20,10 @@ const commentSchema = new mongoose.Schema({
     minlength:1
   },
   forFragrance:{
+    brand:{
+      type:String,
+      required:true
+    },
     name:{
       type:String,
       required:true

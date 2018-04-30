@@ -7,3 +7,5 @@ mongoose.connect("mongodb://localhost/fesn",{
 });
 
 module.exports.User = require("./user");
+module.exports.Fragrance = require("./fragrance");
+module.exports.Comment = require("./comment");

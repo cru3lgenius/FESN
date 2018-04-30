@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const fragranceSchema = new mongoose.Schema({
+  brand:{
+    type:String,
+    required:true
+  },
   name:{
     type:String,
     required:true

@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router({mergeParams:true});
 
-const {getUser} = require("../handlers/users");
+const {getUser,getUsers} = require("../handlers/users");
 
 
-router.route("/").get(getUser);
+router.route("/:id").get(getUser);
+
+router.route("/").get(getUsers);
 
 module.exports = router;
 
