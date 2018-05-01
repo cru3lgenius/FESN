@@ -6,6 +6,10 @@ exports.getUser = async function(req,res,next){
     let user = await db.User.findById(req.params.id).populate("comments",{
       text:true,
       forFragrance:true
+    }).populate("fragrances",{
+      brand:true,
+      createdAt:true,
+      imgUrl:true
     });
     const {comments,fragrances,_id,username,email} = user;
     return res.status(200).json({

@@ -42,7 +42,7 @@ const commentSchema = new mongoose.Schema({
 commentSchema.pre("remove",async function(next){
   try {
     let author = await User.findById(this.author.id);
-    let fragrance = await fragrance.findById(this.forFragrance.id);
+    let fragrance = await Fragrance.findById(this.forFragrance.id);
 
     author.comments.remove(this.id);
     author.save();
