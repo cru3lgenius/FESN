@@ -11,8 +11,9 @@ exports.getUser = async function(req,res,next){
       createdAt:true,
       imgUrl:true
     });
-    const {comments,fragrances,_id,username,email} = user;
+    const {id,comments,fragrances,_id,username,email} = user;
     return res.status(200).json({
+      id,
       username,
       email,
       fragrances,
@@ -27,8 +28,8 @@ exports.getUsers = async function(req,res,next){
   try {
     let allUsers = await db.User.find();
     let filteredUsers = allUsers.map(user=>{
-      const {username,email,fragrances,comments} = user;
-      return {username,email,fragrances,comments};
+      const {id,username,email,fragrances,comments} = user;
+      return {id,username,email,fragrances,comments};
     });
     return res.status(200).json(filteredUsers);
   } catch (error) {

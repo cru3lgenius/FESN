@@ -3,6 +3,7 @@ const db = require("../models");
 exports.createFragrance = async function(req,res,next){
   try {
      let fragrance = await db.Fragrance.create(req.body);
+     //console.log(fragrance);     
      let creator = await db.User.findById(req.body.uploadedBy.id);
      creator.fragrances.push(fragrance);
      await creator.save();
@@ -15,7 +16,7 @@ exports.createFragrance = async function(req,res,next){
 exports.getFragrances = async function(req,res,next){
   try {
     let allFragrances = await db.Fragrance.find();
-    console.log(allFragrances);
+    // console.log(allFragrances);
     return res.status(200).json(allFragrances);
   } catch (error) {
     next(error);
@@ -24,7 +25,8 @@ exports.getFragrances = async function(req,res,next){
 
 exports.getFragrance = async function(req,res,next){
   try {
-    let fragrance = await db.Fragrance.findById(req.params.id);
+    let fragrance = await db.Fragrance.findById(req.params.id).populate("comments",{
+      text:true});
     return res.status(200).json(fragrance);
   } catch (error) {
     next(error);

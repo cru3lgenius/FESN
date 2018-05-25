@@ -2,6 +2,7 @@ const db = require("../models");
 
 exports.createComment = async function(req,res,next){
   try {
+    // /console.log(req.body);
     let comment = await db.Comment.create(req.body);
     let author = await db.User.findById(comment.author.id);
     author.comments.push(comment);
