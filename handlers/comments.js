@@ -5,10 +5,10 @@ exports.createComment = async function(req,res,next){
     // /console.log(req.body);
     let comment = await db.Comment.create(req.body);
     let author = await db.User.findById(comment.author.id);
-    author.comments.push(comment);
+    author.comments.unshift(comment);
     await author.save();
     let forFragrance = await db.Fragrance.findById(comment.forFragrance.id);
-    forFragrance.comments.push(comment);
+    forFragrance.comments.unshift(comment);
     await forFragrance.save();
     return res.status(200).json(comment);
   } catch (error) {
