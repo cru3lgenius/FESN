@@ -26,7 +26,8 @@ exports.getFragrances = async function(req,res,next){
 exports.getFragrance = async function(req,res,next){
   try {
     let fragrance = await db.Fragrance.findById(req.params.id).populate("comments",{
-      text:true});
+      text:true,
+    author:true});
     return res.status(200).json(fragrance);
   } catch (error) {
     next(error);
