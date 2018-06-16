@@ -20,12 +20,6 @@ const fragranceSchema = new mongoose.Schema({
       required:true      
     }
   },
-  rating:{
-    type:Number,
-    min:0,
-    max:5,
-    default:0
-  },
   imageUrl:{
     type:String
   },
@@ -36,6 +30,21 @@ const fragranceSchema = new mongoose.Schema({
   createdAt:{
     type:Date,
     default:Date.now
+  },
+  description:{
+    type:String
+  },
+  occasion:{
+    type:String,
+    required:true
+  },
+  season:{
+    type:String,
+    required:true
+  },
+  performance:{
+    type:String,
+    required:true
   }
 });
 

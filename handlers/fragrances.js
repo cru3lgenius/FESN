@@ -3,7 +3,6 @@ const db = require("../models");
 exports.createFragrance = async function(req,res,next){
   try {
      let fragrance = await db.Fragrance.create(req.body);
-     //console.log(fragrance);     
      let creator = await db.User.findById(req.body.uploadedBy.id);
      creator.fragrances.push(fragrance);
      await creator.save();
