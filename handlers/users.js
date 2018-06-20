@@ -11,13 +11,16 @@ exports.getUser = async function(req,res,next){
       createdAt:true,
       imgUrl:true
     });
-    const {id,comments,fragrances,_id,username,email} = user;
+    const {id,comments,fragrances,username,email,communityRole,socialMediaLinks,profileImageUrl} = user;
     return res.status(200).json({
       id,
       username,
       email,
       fragrances,
-      comments
+      comments,
+      communityRole,
+      socialMediaLinks,
+      profileImageUrl
     });
   } catch (error) {
     next(error);

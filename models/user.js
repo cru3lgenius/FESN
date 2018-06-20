@@ -26,7 +26,22 @@ const userSchema = new mongoose.Schema({
   fragrances:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:"Fragrance"
-  }]
+  }],
+  communityRole:{
+    type:String,
+    required:true
+  },
+  socialMediaLinks:{
+    facebook:{
+      type:String
+    },
+    youtube:{
+      type:String
+    },
+    tweeter:{
+      type:String
+    }
+  }
 });
 
 userSchema.pre("save",async function(next){
